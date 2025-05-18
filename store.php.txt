@@ -1,17 +1,19 @@
 <?php
 
-$myfile = fopen("location.txt", "w")
-$txt = "lat: " .$GET["lat"] . "\nlong: " . $_get["long"]. "\nIP: " . $_SERVER["REMOTE_ADDR"] .
-"\nuseragent :" . $GET["uagent"];
+// Open file to write (overwrites each time)
+$myfile = fopen("location.txt", "w");
+
+// Collect data safely
+$lat = $_GET["lat"] ?? 'unknown';
+$long = $_GET["long"] ?? 'unknown';
+$uagent = $_GET["uagent"] ?? 'unknown';
+$ip = $_SERVER["REMOTE_ADDR"] ?? 'unknown';
+
+// Format the string
+$txt = "lat: $lat\nlong: $long\nIP: $ip\nuseragent: $uagent";
+
+// Write to file
 fwrite($myfile, $txt);
 fclose($myfile);
-
-
-
-
-
-
-
-
 
 ?>
